@@ -9,14 +9,10 @@ def print_table(data):
     if not data:
         print("Список пуст")
         return
-    print("\n{:<5} {:<20} {:<10} {:<15} {:<12}".format(
-        "№", "Название", "Цена", "Категория", "Дата"
-    ))
+    print("\n{:<5} {:<20} {:<10} {:<15} {:<12}".format("№", "Название", "Цена", "Категория", "Дата"))
     print("-" * 65)
     for i, p in enumerate(data, 1):
-        print("{:<5} {:<20} {:<10.2f} {:<15} {:<12}".format(
-            i, p["name"], p["price"], p["category"], p["date"]
-        ))
+        print("{:<5} {:<20} {:<10.2f} {:<15} {:<12}".format(i, p["name"], p["price"], p["category"], p["date"]))
 
 # ===== УПРАВЛЕНИЕ ПОКУПКАМИ =====
 def add_purchase():
@@ -28,7 +24,6 @@ def add_purchase():
         return
     category = input("Категория: ")
     date_input = input("Дата (ГГГГ-ММ-ДД, Enter = сегодня): ")
-
     if date_input == "":
         date = datetime.now().strftime("%Y-%m-%d")
     else:
@@ -38,12 +33,7 @@ def add_purchase():
         except ValueError:
             print("Неверный формат даты")
             return
-    purchases.append({
-        "name": name,
-        "price": price,
-        "category": category,
-        "date": date
-    })
+    purchases.append({ "name": name, "price": price,"category": category,"date": date})
     print("Покупка добавлена")
 def view_purchases():
     print_table(purchases)
